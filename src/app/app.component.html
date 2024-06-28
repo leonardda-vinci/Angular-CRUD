@@ -1,0 +1,101 @@
+<script src="https://cdn.tailwindcss.com"></script>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/tailwindcss/1.2.0/tailwind.min.css">
+<link href="https://cdn.jsdelivr.net/npm/tailwindcss@latest/dist/tailwind.min.css" rel="stylesheet">
+
+<mat-toolbar class="bg-blue-600">
+  <button mat-icon-button class="example-icon text-white md:hidden" aria-label="Example icon-button with menu icon">
+    <mat-icon>menu</mat-icon>
+  </button>
+  <span class="text-white">CRUD Application</span>
+  <span class="example-spacer"></span>
+  
+  <button mat-raised-button (click)="openAddEditEmpForm()">
+    Add Employee
+  </button>
+</mat-toolbar>
+
+<mat-form-field>
+  <mat-label>Filter</mat-label>
+  <input matInput (keyup)="applyFilter($event)" placeholder="Ex. Mia" #input>
+</mat-form-field>
+
+<div class="mat-elevation-z8 container mx-auto rounded-xl shadow-lg">
+  <table mat-table [dataSource]="dataSource" matSort>
+    
+    <ng-container matColumnDef="id">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header> ID </th>
+      <td mat-cell *matCellDef="let row"> {{row.id}} </td>
+    </ng-container>
+    
+    <ng-container matColumnDef="firstName">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header> Firstname </th>
+      <td mat-cell *matCellDef="let row"> {{row.firstName | titlecase}} </td>
+    </ng-container>
+    
+    <ng-container matColumnDef="lastName">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header> Lastname </th>
+      <td mat-cell *matCellDef="let row"> {{row.lastName | titlecase}} </td>
+    </ng-container>
+    
+    <ng-container matColumnDef="email">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header> Email </th>
+      <td mat-cell *matCellDef="let row"> {{row.email}} </td>
+    </ng-container>
+    
+    <ng-container matColumnDef="dob">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header> Date of Birth </th>
+      <td mat-cell *matCellDef="let row"> {{row.dob | date}} </td>
+    </ng-container>
+    
+    <ng-container matColumnDef="gender">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header> Gender </th>
+      <td mat-cell *matCellDef="let row"> {{row.gender | titlecase}} </td>
+    </ng-container>
+    
+    <ng-container matColumnDef="education">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header> Education </th>
+      <td mat-cell *matCellDef="let row"> {{row.education | titlecase}} </td>
+    </ng-container>
+    
+    <ng-container matColumnDef="company">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header> Company </th>
+      <td mat-cell *matCellDef="let row"> {{row.company}} </td>
+    </ng-container>
+    
+    <ng-container matColumnDef="experience">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header> Experience </th>
+      <td mat-cell *matCellDef="let row"> {{row.experience}} </td>
+    </ng-container>
+    
+    <ng-container matColumnDef="package">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header> Package </th>
+      <td mat-cell *matCellDef="let row"> {{row.package | currency:'PHP'}} </td>
+    </ng-container>
+    
+    <ng-container matColumnDef="action">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header> Action </th>
+      <td mat-cell *matCellDef="let row"> 
+        <button mat-icon-button 
+        class="text-green-600" 
+        (click)="openEditForm(row)"
+        >
+          <mat-icon>edit</mat-icon>
+        </button>
+        <button mat-icon-button class="text-red-600" (click)="deleteEmployee(row.id)">
+          <mat-icon>delete</mat-icon>
+        </button>
+      </td>
+    </ng-container>
+
+
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+
+    <!-- Row shown when there is no matching data. -->
+    <tr class="mat-row" *matNoDataRow>
+      <td class="mat-cell" colspan="4">No data matching the filter "{{input.value}}"</td>
+    </tr>
+  </table>
+  <mat-paginator [pageSizeOptions]="[5, 10, 25, 100]" aria-label="Select page of users"></mat-paginator>
+</div>
+

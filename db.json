@@ -1,0 +1,76 @@
+{
+  "employees": [
+    {
+      "firstName": "john leonard",
+      "lastName": "valledor",
+      "email": "johnleonard@gmail.com",
+      "dob": "1995-07-07T16:00:00.000Z",
+      "gender": "male",
+      "education": "intermediate",
+      "company": "RCFS",
+      "experience": 4,
+      "package": 12,
+      "id": "9297"
+    },
+    {
+      "id": "792d",
+      "firstName": "John ",
+      "lastName": "Doe",
+      "email": "doejohn@gmail.com",
+      "dob": "2024-06-19T16:00:00.000Z",
+      "gender": "male",
+      "education": "intermediate",
+      "company": "CIA",
+      "experience": 4,
+      "package": 12
+    },
+    {
+      "id": "637a",
+      "firstName": "Kim",
+      "lastName": "Dami",
+      "email": "damikim@gmail.com",
+      "dob": "1995-04-04T16:00:00.000Z",
+      "gender": "female",
+      "education": "intermediate",
+      "company": "RCS Supermarket",
+      "experience": 4,
+      "package": 100000
+    },
+    {
+      "id": "1ecc",
+      "firstName": "Nath",
+      "lastName": "Dick",
+      "email": "dicknath@gmail.com",
+      "dob": "1993-08-09T16:00:00.000Z",
+      "gender": "male",
+      "education": "intermediate",
+      "company": "RCS",
+      "experience": 4,
+      "package": 12
+    },
+    {
+      "id": "28f7",
+      "firstName": "asasdas",
+      "lastName": "dasdadsad",
+      "email": "asads@gmail.com",
+      "dob": "1994-03-02T16:00:00.000Z",
+      "gender": "male",
+      "education": "graduate",
+      "company": "rcs",
+      "experience": 2,
+      "package": 12
+    },
+    {
+      "id": "5150",
+      "firstName": "sdasdsad",
+      "lastName": "dasdas",
+      "email": "asdas@gmail.com",
+      "dob": "1888-10-09T15:54:17.000Z",
+      "gender": "male",
+      "education": "intermediate",
+      "company": "sdfasdasd",
+      "experience": 14,
+      "package": 1566777
+    }
+  ]
+}

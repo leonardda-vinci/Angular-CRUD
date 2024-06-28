@@ -1,0 +1,93 @@
+<script src="https://cdn.tailwindcss.com"></script>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/tailwindcss/1.2.0/tailwind.min.css">
+<link href="https://cdn.jsdelivr.net/npm/tailwindcss@latest/dist/tailwind.min.css" rel="stylesheet">
+
+
+<div class="px-10 py-5">
+ <div mat-dialog-title>
+   <h1>Employe Form</h1>
+ </div>
+ 
+ <form [formGroup]="empForm" (ngSubmit)="onFormSubmit()">
+   <div mat-dialog-content class="my-2"> 
+     <div class="flex flex-row gap-3">
+      <mat-form-field class="w-full flex justify-center">
+        <mat-label class="">Firstname</mat-label>
+        <input matInput type="text" placeholder="Ex. John" formControlName="firstName">
+      </mat-form-field>
+  
+      <mat-form-field class="w-full flex justify-center">
+        <mat-label>Lastname</mat-label>
+        <input matInput type="text" placeholder="Ex. Doe" formControlName="lastName">
+      </mat-form-field>
+    </div>
+  
+     <div class="grid grid-cols-2 gap-3">
+      <mat-form-field class="w-full flex justify-center">
+          <mat-label>Email</mat-label>
+          <input matInput type="email" placeholder="Ex. example@gmail.com" formControlName="email">
+      </mat-form-field>
+  
+      <mat-form-field>
+        <mat-label>Date of Birth</mat-label>
+        <input matInput [matDatepicker]="picker" formControlName="dob">
+        <mat-hint>MM/DD/YYYY</mat-hint>
+        <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
+        <mat-datepicker #picker></mat-datepicker>
+      </mat-form-field>
+     </div>
+  
+     <div>
+          <mat-radio-group aria-label="Select an option" formControlName="gender">
+              <mat-label class="font-semibold">Gender:</mat-label>
+              <mat-radio-button value="male">Male</mat-radio-button>
+              <mat-radio-button value="female">Female</mat-radio-button>
+              <mat-radio-button value="others">Others</mat-radio-button>
+          </mat-radio-group>
+     </div>
+  
+     <div>
+       <mat-form-field class="w-full">
+        <mat-label for="education">Education</mat-label>
+        <mat-select id="education" formControlName="education">
+          @for (education of educations; track education) {
+            <mat-option [value]="education.value">{{education.viewValue}}</mat-option>
+          }
+        </mat-select>
+       </mat-form-field>
+  
+       <mat-form-field class="w-full flex justify-center">
+        <mat-label>Company</mat-label>
+        <input matInput type="text" placeholder="Ex. Microsoft" formControlName="company">
+      </mat-form-field>
+     </div>
+  
+     <div class="grid grid-cols-2 gap-2">
+      <mat-form-field> 
+        <mat-label>Experience</mat-label>
+        <input matInput type="number" placeholder="Ex. 4 years" formControlName="experience">
+      </mat-form-field>
+      <mat-form-field>
+        <mat-label>Package</mat-label>
+        <input matInput type="number" placeholder="Ex. 12" formControlName="package">
+        <mat-hint>In peso (P)</mat-hint>
+      </mat-form-field>
+     </div>
+  
+   </div>
+   <div mat-dialog-actions class="grid grid-cols-2 gap-2">
+     <button mat-raised-button type="button" [mat-dialog-close]="false"
+    class="p-2 rounded-lg shadow-md font-semibold mr-2 w-full hover:bg-gray-200">
+      Cancel
+    </button>
+    <button mat-raised-button 
+      class="bg-blue-600 text-white p-2 px-5 rounded-lg shadow-md font-semibold w-full hover:bg-blue-800"
+      type="submit">
+      {{
+        data ? 'Update': 'Save'
+      }}
+    </button>
+  </div>
+ </form>
+      <!-- [mat-dialog-close]="false" -->
+</div>
